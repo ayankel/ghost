@@ -1,6 +1,7 @@
 # http://support.ghost.org/supported-node-versions/
 # https://github.com/nodejs/LTS
-FROM node:4-slim
+FROM hypriot/rpi-node:4-slim
+#FROM node:4-slim
 
 RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
 
@@ -26,6 +27,7 @@ RUN buildDeps=' \
 		make \
 		python \
 		unzip \
+		build-essential \
 	' \
 	&& set -x \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
